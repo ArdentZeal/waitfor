@@ -12,7 +12,7 @@ var Wait = {
 
         if (typeof fn !== 'function') throw new Error('first argument must be a function');
         var newargs=Array.prototype.slice.call(arguments,1); // remove function from args
-        Fiber( function(){ fn.apply(null, newargs)} ).run(); //launch new fiber, call the fn with the args, this=null (strict)
+        return Fiber( function(){ fn.apply(null, newargs)} ).run(); //launch new fiber, call the fn with the args, this=null (strict)
     }
 
     ,applyAndWait: function(thisValue,fn,args){ // like js fn.apply, but wait for results
